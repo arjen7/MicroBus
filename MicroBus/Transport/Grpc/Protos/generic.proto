@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option csharp_namespace = "MicroBus.Transport.Grpc";
+
+package microbus;
+
+message GenericRequest {
+  string requestType = 1;
+  string responseType = 2;   
+  bytes payload = 3;
+}
+
+message GenericResponse {
+  bytes payload = 1;
+}
+
+service MicroBus {
+  rpc Handle(GenericRequest) returns (GenericResponse);
+}
